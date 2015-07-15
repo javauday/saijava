@@ -1,0 +1,7 @@
+First Name: <input type="text" ng-model="user.firstName"><br>
+password: <input type="password" ng-model="user.password"><br>
+email: <input type="text" ng-model="user.email"><br>
+state:<select ng-model="user.state" ng-change="loadcity()" ng-options="state.name for state in states"></select>
+city:<input ng-model="user.city">
+
+<input type="button" ng-click="register()" value="click"/>
