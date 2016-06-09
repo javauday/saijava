@@ -1,0 +1,127 @@
+
+The first argument passed to the callback function will be used as the script's result. This value will be handled as follows:
+
+For an HTML element, this method returns a WebElement
+For a number, a Long is returned
+For a boolean, a Boolean is returned
+For all other cases, a String is returned.
+For an array, return a List<Object> with each object following the rules above. We support nested lists.
+Unless the value is null or there is no return value, in which null is returned
+The default timeout for a script to be executed is 0ms. In most cases, including the examples below, one must set the script timeout WebDriver.Timeouts.setScriptTimeout(long, java.util.concurrent.TimeUnit) beforehand to a value sufficiently large enough.
+
+Example #1: Performing a sleep in the browser under test.
+
+
+   long start = System.currentTimeMillis();
+   ((JavascriptExecutor) driver).executeAsyncScript(
+       "window.setTimeout(arguments[arguments.length - 1], 500);");
+   System.out.println(
+       "Elapsed time: " + System.currentTimeMillis() - start);
+ 
+Example #2: Synchronizing a test with an AJAX application:
+
+
+   WebElement composeButton = driver.findElement(By.id("compose-button"));
+   composeButton.click();
+   ((JavascriptExecutor) driver).executeAsyncScript(
+       "var callback = arguments[arguments.length - 1];" +
+       "mailClient.getComposeWindowWidget().onload(callback);");
+   driver.switchTo().frame("composeWidget");
+   driver.findElement(By.id("to")).sendKeys("bog@example.com");
+ 
+Example #3: Injecting a XMLHttpRequest and waiting for the result:
+
+
+   Object response = ((JavascriptExecutor) driver).executeAsyncScript(
+       "var callback = arguments[arguments.length - 1];" +
+       "var xhr = new XMLHttpRequest();" +
+       "xhr.open('GET', '/resource/data.json', true);" +
+       "xhr.onreadystatechange = function() {" +
+       "  if (xhr.readyState == 4) {" +
+       "    callback(xhr.responseText);" +
+       "  }" +
+       "};" +
+       "xhr.send();");
+   JsonObject json = new JsonParser().parse((String) response);
+   assertEquals("cheese", json.get("food").getAsString());
+ 
+Script arguments must be a number, a boolean, a String, WebElement, or a List of any combination of the above. An exception will be thrown if the arguments do not meet these criteria. The arguments will be made available to the JavaScript via the "arguments" variable.
+
+Specified by:
+executeAsyncScript in interface JavascriptExecutor
+Parameters:
+script - The JavaScript to execute.
+args - The arguments to the script. May be empty.
+Returns:
+One of Boolean, Long, String, List, WebElement, or null.
+See Also:
+WebDriver.Timeouts.setScriptTimeout(long, java.util.concurrent.TimeUnit)
+switchTo
+public WebDriver.TargetLocator switchTo()
+Description copied from interface: WebDriver
+Send future commands to a different frame or window.
+Specified by:
+switchTo in interface WebDriver
+Returns:
+A TargetLocator which can be used to select a frame or window
+See Also:
+WebDriver.TargetLocator
+navigate
+public WebDriver.Navigation navigate()
+Description copied from interface: WebDriver
+An abstraction allowing the driver to access the browser's history and to navigate to a given URL.
+Specified by:
+navigate in interface WebDriver
+Returns:
+A WebDriver.Navigation that allows the selection of what to do next
+manage
+public WebDriver.Options manage()
+Description copied from interface: WebDriver
+Gets the Option interface
+Specified by:
+manage in interface WebDriver
+Returns:
+An option interface
+See Also:
+WebDriver.Options
+setElementConverter
+protected void setElementConverter(org.openqa.selenium.remote.internal.JsonToWebElementConverter converter)
+getElementConverter
+protected org.openqa.selenium.remote.internal.JsonToWebElementConverter getElementConverter()
+setLogLevel
+public void setLogLevel(java.util.logging.Level level)
+Sets the RemoteWebDriver's client log level.
+Parameters:
+level - The log level to use.
+execute
+protected Response execute(java.lang.String driverCommand,
+                           java.util.Map<java.lang.String,?> parameters)
+execute
+protected Response execute(java.lang.String command)
+getExecuteMethod
+protected ExecuteMethod getExecuteMethod()
+getKeyboard
+public Keyboard getKeyboard()
+Specified by:
+getKeyboard in interface HasInputDevices
+getMouse
+public Mouse getMouse()
+Specified by:
+getMouse in interface HasInputDevices
+log
+protected void log(SessionId sessionId,
+                   java.lang.String commandName,
+                   java.lang.Object toLog,
+                   RemoteWebDriver.When when)
+Override this to be notified at key points in the execution of a command.
+Parameters:
+sessionId - the session id.
+commandName - the command that is being executed.
+toLog - any data that might be interesting.
+when - verb tense of "Execute" to prefix message
+getFileDetector
+public FileDetector getFileDetector()
+toString
+public java.lang.String toString()
+Overrides:
+toString in class java.lang.Object
