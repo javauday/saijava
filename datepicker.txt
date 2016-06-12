@@ -1,0 +1,13 @@
+Log.info("Clicking on From daterange dropdown");
+JavascriptExecutor executor8 = (JavascriptExecutor)driver;
+executor8.executeScript("document.getElementById('fromDate').style.display='block';");
+Select select8 = new Select(driver.findElement(By.id("fromDate")));
+select8.selectByVisibleText("10 Jan 2013");
+Thread.sleep(3000);
+
+Log.info("Clicking on To daterange dropdown");
+JavascriptExecutor executor10 = (JavascriptExecutor)driver;
+executor10.executeScript("document.getElementById('toDate').style.display='block';");
+Select select10 = new Select(driver.findElement(By.id("toDate")));
+select10.selectByVisibleText("31 Dec 2013");
+Thread.sleep(3000);
