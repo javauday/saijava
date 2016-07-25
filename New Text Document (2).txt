@@ -1,0 +1,408 @@
+
+https://www.udemy.com/soapui-with-groovy-with-realtime-projects/
+      Ans:     
+
+      Or find answers for below questions and study:
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Study basics from SOAPUI.org (study how to test soap and rest services)
+      Ans: https://www.soapui.org/getting-started/your-first-soapui-project.html
+              https://www.soapui.org/rest-testing/getting-started.html
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+what is web service?
+
+      Ans: A web service is a collection of open protocols and standards used for exchanging data between applications or systems. Software applications written in various programming languages and running on various platforms can use web services to exchange data over computer networks like the Internet in a manner similar to inter-process communication on a single computer. This interoperability (e.g., between Java and Python, or Windows and Linux applications) is due to the use of open standards.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+what is XML and what will be format?
+
+XML is a file extension for an Extensible Markup Language (XML) file format used to create common information formats and share both the format and the data on the World Wide Web, intranets, and elsewhere using standard ASCII text. XML is similar to HTML.
+
+XML stands for EXtensible Markup Language
+XML is a markup language much like HTML
+XML was designed to store and transport data
+XML was designed to be self-descriptive
+XML is a W3C Recommendation
+
+eg: <note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend!</body>
+</note>
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+steps to test soap and rest web services using soapUI pro (www.soapui.org)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+what is requestxml and responseXML
+
+
+Sample XML Request
+
+Below is a sample XML request.
+<http://localhost:8080/rest/ValidateAddress/results.xmlOption.Database.US=USA&Data.AddressLine1=1825%20Kramer%20Lane&Data.PostalCode=78759
+
+Sample XML Response
+Below is a sample XML response.
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+				<xml.ValidateAddressResponse xmlns="http://www.pb.com/spectrum/services/ValidateAddress">
+				<output_port>
+				<Address>
+				<Confidence>82</Confidence>
+				<RecordType>Normal</RecordType>
+				<CountryLevel>A</CountryLevel>
+				<ProcessedBy>USA</ProcessedBy>
+				<MatchScore>0</MatchScore>
+				<AddressLine1>1825 Kramer Ln</AddressLine1>
+				<City>Austin</City>
+				<StateProvince>TX</StateProvince>
+				<PostalCode>78758-4260</PostalCode>
+				<PostalCode.Base>78758</PostalCode.Base>
+				<PostalCode.AddOn>4260</PostalCode.AddOn>
+				<Country>United States Of America</Country>
+				<user_fields/>
+				</Address>
+				</output_port>
+				</xml.ValidateAddressResponse>
+
+
+
+By Using SOAP
+Request                                                       
+
+POST /InStock HTTP/1.1
+Host: www.example.org
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Body xmlns:m="http://www.example.org/stock">
+  <m:GetStockPrice>
+    <m:StockName>IBM</m:StockName>
+  </m:GetStockPrice>
+</soap:Body>
+
+</soap:Envelope>
+
+Response:
+
+POST /InStock HTTP/1.1
+Host: www.example.org
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Body xmlns:m="http://www.example.org/stock">
+  <m:GetStockPrice>
+    <m:StockName>IBM</m:StockName>
+  </m:GetStockPrice>
+</soap:Body>
+
+</soap:Envelope>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Different http methods?
+What is HTTP?
+The Hypertext Transfer Protocol (HTTP) is designed to enable communications between clients and servers.
+
+HTTP works as a request-response protocol between a client and server.
+
+A web browser may be the client, and an application on a computer that hosts a web site may be the server.
+
+Example: A client (browser) submits an HTTP request to the server; then the server returns a response to the client. The response contains status information about the request and may also contain the requested content.
+
+Two HTTP Request Methods: GET and POST
+Two commonly used methods for a request-response between a client and server are: GET and POST.
+
+GET - Requests data from a specified resource
+POST - Submits data to be processed to a specified resource
+The GET Method
+Note that the query string (name/value pairs) is sent in the URL of a GET request:
+
+/test/demo_form.asp?name1=value1&name2=value2
+Some other notes on GET requests:
+
+GET requests can be cached
+GET requests remain in the browser history
+GET requests can be bookmarked
+GET requests should never be used when dealing with sensitive data
+GET requests have length restrictions
+GET requests should be used only to retrieve data
+The POST Method
+Note that the query string (name/value pairs) is sent in the HTTP message body of a POST request:
+
+POST /test/demo_form.asp HTTP/1.1
+Host: w3schools.com
+name1=value1&name2=value2
+Some other notes on POST requests:
+
+POST requests are never cached
+POST requests do not remain in the browser history
+POST requests cannot be bookmarked
+POST requests have no restrictions on data length
+
+
+
+Method	Description
+HEAD	Same as GET but returns only HTTP headers and no document body
+PUT	Uploads a representation of the specified URI
+DELETE	Deletes the specified resource
+OPTIONS	Returns the HTTP methods that the server supports
+CONNECT	Converts the request connection to a transparent TCP/IP tunnel
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+what is json and how is the format look like?
+
+JSON: JavaScript Object Notation.
+
+JSON is a syntax for storing and exchanging data.
+
+JSON is an easier-to-use alternative to XML.
+
+
+
+JSON Example :
+
+{"employees":[
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    {"firstName":"Peter", "lastName":"Jones"}
+]}
+The following XML example also defines an employees object with 3 employee records:
+
+XML Example :
+
+<employees>
+    <employee>
+        <firstName>John</firstName> <lastName>Doe</lastName>
+    </employee>
+    <employee>
+        <firstName>Anna</firstName> <lastName>Smith</lastName>
+    </employee>
+    <employee>
+        <firstName>Peter</firstName> <lastName>Jones</lastName>
+    </employee>
+</employees>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+how to read from json string (for validation purpose) and how to create json data for input
+
+Validating JSON string:                                                      
+
+function testJSON(text){
+    try{
+        JSON.parse(text);
+        return true;
+    }
+    catch (error){
+        return false;
+    }
+}
+Result with a valid JSON string:
+
+var input='["foo","bar",{"foo":"bar"}]';
+testJSON(input); // returns true;
+Result with a simple string;
+
+var input='This is not a JSON string.';
+testJSON(input); // returns false;
+
+
+how to create json data for input :
+
+function createJSON() {
+    jsonObj = [];
+    $("input[class=email]").each(function() {
+
+        var id = $(this).attr("title");
+        var email = $(this).val();
+
+        item = {}
+        item ["title"] = id;
+        item ["email"] = email;
+
+        jsonObj.push(item);
+    });
+
+    console.log(jsonObj);
+}
+Explanation
+
+You are looking for an array of objects. So, you create a blank array. Create an object for each input by using 'title' and 'email' as keys. Then you add each of the objects to the array.
+
+If you need a string, then do
+
+jsonString = JSON.stringify(jsonObj);
+
+Sample Output:
+[{"title":"QA","email":"a@b"},{"title":"PROD","email":"b@c"},{"title":"DEV","email":"c@d"}] 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+difference is soap web service and rest web service:
+
+SOAP
+
+Simple Object Access Protocol (SOAP) standard an XML language defining a message architecture and message formats, is used by Web services it contain a description of the operations. WSDL is an XML-based language for describing Web services and how to access them. will run on SMTP,HTTP,FTP etc. Requires middleware support, well defined mechanisam to define services like WSDL+XSD, WS-Policy SOAP will return XML based data
+
+REST Representational State Transfer (RESTful) web services. they are second generation Web Services. RESTful web services, communicate via HTTP than SOAP-based services and do not require XML messages or WSDL service-API definitions. for REST no middleware is required only HTTP support is needed.WADL Standard, REST can return XML, plain text, JSON, HTML etc
+
+
+
+------------------------------------------------------------------------------------------------------------------
+assertions in soapUI:
+
+ Assertions compare the parts/all of the response message to the expected outcome.
+
+ major types of assertions available in SoapUI....
+
+Assertions are the one of the major feature in SoapUI. It offers the following types of assertions.
+
+Simple contains
+Schema compliance
+Simple not contains
+Soap Faults
+Response SLA
+XPath Match
+XQuery Match
+WS security status
+Script Assertion
+WS- Addressing Request or Response Assertion
+Additionally Equals assertion is introduced in SoapUI NG Pro version.
+-----------------------------------------------------------------------------------------------
+xpath from w3school (http://www.w3schools.com/xml/xml_xpath.asp)
+
+http://www.w3schools.com/xml/xml_xpath.asp
+
+
+---------------------------------------------------------------------------------------------------
+
+
+what is / and // in xpath
+
+*/	Selects from the root node
+//	Selects nodes in the document from the current node that match the selection no matter where they are
+
+ When / is used at the beginning of a path:
+
+/a
+
+... it will define an absolute path to node "a" relative to the root. As such, in this case, it will only find "a" nodes at the root of the XML tree.
+
+When // is used at the beginning of a path:
+
+//a
+
+... it will define a path to node "a" anywhere within the XML document. As such, in this case, it will find "a" nodes located at any depth within the XML tree.
+
+These XPath expressions can also be used in the middle of an XPath value to define ancestor-descendant relationships. When / is used in the middle of a path:
+
+/a/b
+
+... it will define a path to node "b" that is a direct descendant (ie. a child) of node "a".
+
+When // used in the middle of a path:
+
+/a//b
+
+... it will define a path to node "b" that is any descendant of of node "a".
+
+-------------------------------------------------------------------------------------------------------
+SOAP UI groovy script assertions :
+
+http://webservice-testing.blogspot.com/p/groovy-scripts.html
+
+------------------------------------------------------------------------------------------
+how to read attributes in xpath
+
+<person gender="female">
+<person gender='female'>
+<gangster name='George "Shotgun" Ziegler'>
+<gangster name="George &quot;Shotgun&quot; Ziegler">
+
+eg:
+
+<person gender="female">
+  <firstname>Anna</firstname>                ------------>Gender=attribute
+  <lastname>Smith</lastname>
+</person>
+
+<person>
+  <gender>female</gender>
+  <firstname>Anna</firstname>------------------------------->gender=element
+  <lastname>Smith</lastname>
+</person>
+
+-------------------------------------------------------------------------------------------
+different functions in xpath (contains(), text() etc)
+
+//*[contains(text(),'ABC')]
+
+The DOM makes the Comment element a composite element with four tags two
+
+[Text = 'XYZ'][BR][BR][Text = 'ABC'] 
+
+The DOM makes the Comment element a composite element with four tags two
+
+[Text = 'XYZ'][BR][BR][Text = 'ABC'] 
+
+he following query returns the element but it returns far more then just the element, it returns the parent elements as well ... which is undesirable to the problem ...
+
+//*[contains(text(),'ABC')]
+
+* is a selector that matches any element (i.e. tag) -- it returns a node-set.
+The [] are a conditional that operates on each individual node in that node set. It matches if any of the individual nodes it operates on match the conditions inside the brackets.
+text() is a selector that matches all of the text nodes that are children of the context node -- it returns a node set.
+contains is a function that operates on a string. If it is passed a node set, the node set is converted into a string by returning the string-value of the node in the node-set that is first in document order. Hence, it can match only the first text node in your <Comment> element -- namely BLAH BLAH BLAH. Since that doesn't match, you don't get a <Comment> in your results.
+You need to change this to
+
+//*[text()[contains(.,'ABC')]]
+* is a selector that matches any element (i.e. tag) -- it returns a node-set.
+The outer [] are a conditional that operates on each individual node in that node set -- here it operates on each element in the document.
+text() is a selector that matches all of the text nodes that are children of the context node -- it returns a node set.
+The inner [] are a conditional that operates on each node in that node set -- here each individual text node. Each individual text node is the starting point for any path in the brackets, and can also be referred to explicitly as . within the brackets. It matches if any of the individual nodes it operates on match the conditions inside the brackets.
+contains is a function that operates on a string. Here it is passed an individual text node (.). Since it is passed the second text node in the <Comment> tag individually, it will see the 'ABC' string and be able to match it.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+how to read child nodes/parent nodes in xpath
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+what is XSD, wdsl and what is contains
+security testing of soap and rest api
+what is endpoint and operation names
+Groovy script 
+       (connecting to database, declaring variables, forach loop, converting json string to object)
+      21) soap UI environment tab , what is the use of this
+
+     Calling soap services directly in selenium with jax-rs and jax-ws frameworks
+
+     Calling rest services using bdd/cucumber or in feature file
+
+     Other tools:
+     RestAssured (u can learn this after completing all QA concepts)
+     Postman (u can learn this after completing all QA concepts)
+    
