@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>AIRLINES</display-name>
+  <welcome-file-list>
+   <!--  <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file> -->
+    <welcome-file>PassangerDetails.html</welcome-file>
+  </welcome-file-list>
+ <servlet>
+ <description></description>
+<display-name>AdminEntry</display-name>
+<servlet-name>AdminEntry</servlet-name>
+<servlet-class>com.as.lines.AdminEntry</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>AdminEntry</servlet-name>
+<url-pattern>AdminEntry</url-pattern>
+</servlet-mapping>
+ 
+  <servlet>
+<description></description>
+<display-name>Infolink</display-name>
+<servlet-name>Infolink</servlet-name>
+<servlet-class>com.as.lines.Infolink</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>Infolink</servlet-name>
+<url-pattern>Infolink</url-pattern>
+</servlet-mapping>
+<servlet>
+<display-name>LinkPD</display-name>
+<servlet-name>LinkPD</servlet-name>
+<servlet-class>com.as.lines.LinkPD</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>LinkPD</servlet-name>
+<url-pattern>LinkPD</url-pattern>
+</servlet-mapping>
+  
+  </web-app>
